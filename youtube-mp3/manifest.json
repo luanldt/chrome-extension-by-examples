@@ -1,0 +1,44 @@
+{
+    "name": "Youtube MP3",
+    "version": "0.0.1",
+    "manifest_version": 3,
+
+    "description": "Extension using to listen youtube by MP3",
+
+    "author": "luanldt1905@gmail.com",
+
+    "permissions": [
+        "tabs",
+        "webRequest",
+        "nativeMessaging",
+        "storage"
+    ],
+
+    "host_permissions": [
+        "*://*.youtube.com/*",
+        "*://*.googlevideo.com/*"
+    ],
+    
+    "icons": {
+        "16": "images/16.png",
+        "24": "images/24.png",
+        "48": "images/48.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*.youtube.com/*"],
+            "js": ["scripts/content-script.js"],
+            "css": ["style.css"],
+            "run_at": "document_start",
+            "all_frames": true
+        }
+    ],
+    "background": {
+        "service_worker": "scripts/background.js"
+    },
+
+    "action": {
+        "default_title": "Youtube MP3"
+    }
+    
+}
